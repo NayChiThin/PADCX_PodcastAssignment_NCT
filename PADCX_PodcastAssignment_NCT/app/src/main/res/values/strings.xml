@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">PADCX_PodcastAssignment_NCT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_search">Search</string>
+    <string name="txt_your_show">Your Show</string>
+    <string name="txt_profile">Profile</string>
+    <string name="lbl_podcast">Podcast</string>
+    <string name="txt_1x">1x</string>
+    <string name="txt_zz">Zz</string>
+    <string name="txt_up_next">Up Next</string>
+    <string name="txt_art_and_design"><![CDATA[Art & Design]]></string>
+    <string name="txt_tip">How to Influence with Tactical Empathy</string>
+    <string name="txt_search_categories">Search Categories</string>
+    <string name="txt_your">Your</string>
+    <string name="txt_shows">Shows</string>
+    <string name="txt_welcome">Welcome</string>
+    <string name="txt_welcome_desc">It looks like you aren\'t enrolled in any podcasts, but it\'s easy to get started.</string>
+    <string name="txt_find_new">Find Something New</string>
+    <string name="txt_reload">Reload</string>
+    <string name="txt_massive_description">Take your career to the next level by showing your
+    prospective clients just now how awesome you are by making your personal website with a
+    personalized domain name. Having a personalized domain name will make you stand out of the
+    crowd and let your audience and clients recognize your brand. So, whether you decide
+    on yourname.me or use a well-known alias, like bingbong.me, .ME domain is uniquely
+    positioned to help you create a captivating online persona that\'s a direct reflection of
+        Take your career to the next level by showing your
+    prospective clients just now how awesome you are by making your personal website with a
+    personalized domain name. Having a personalized domain name will make you stand out of the
+    crowd and let your audience and clients recognize your brand. So, whether you decide
+    on yourname.me or use a well-known alias, like bingbong.me, .ME domain is uniquely
+    positioned to help you create a captivating online persona that\'s a direct reflection of
+        this is the end.
+    </string>
 </resources>

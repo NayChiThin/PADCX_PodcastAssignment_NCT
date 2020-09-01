@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomImageView">
+        <attr name="cornerRadius" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="StraightProgressBar">
+        <attr name="barPercent" format="float"/>
+        <attr name="barColor" format="color"/>
+    </declare-styleable>
+</resources>

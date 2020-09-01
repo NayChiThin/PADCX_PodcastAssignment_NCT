@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
@@ -9,7 +10,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.padcmyanmar.androidftc.padcx_podcastassignment_nct"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -21,15 +22,70 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
+    implementation project(":shared")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation rootProject.ext.libraries.kotlin
+    implementation rootProject.ext.libraries.appCompat
+    implementation rootProject.ext.libraries.coreKtx
+    implementation rootProject.ext.libraries.constraintLayout
+    implementation rootProject.ext.libraries.recyclerView
+    implementation rootProject.ext.libraries.cardView
+    implementation rootProject.ext.libraries.legacySupport
+    implementation rootProject.ext.libraries.material
+
+    // image binder
+    implementation rootProject.ext.libraries.glide
+    annotationProcessor rootProject.ext.libraries.glideAnnotation
+
+    //Retrofit
+    implementation rootProject.ext.libraries.retrofit
+    implementation rootProject.ext.libraries.converterGson
+    implementation rootProject.ext.libraries.adapterRxJava2
+
+    // LiveData
+    implementation rootProject.ext.libraries.lifeCycleLiveDataKtx
+
+    // lifecycle components
+    implementation rootProject.ext.libraries.lifeCycleExtensions
+    kapt rootProject.ext.libraries.lifeCycleCompiler
+
+    // Annotation processor
+    kapt rootProject.ext.libraries.lifeCycleAnnotationProcessor
+
+
+    //RxKotlin
+    implementation rootProject.ext.libraries.rxKotlin
+    implementation rootProject.ext.libraries.rxAndroid
+
+    // Room
+    implementation rootProject.ext.libraries.roomRuntime
+    kapt rootProject.ext.libraries.roomCompiler
+    implementation rootProject.ext.libraries.material
+
+    // Test
+    testImplementation rootProject.ext.testLibraries.junitKtx
+    testImplementation rootProject.ext.testLibraries.testKtx
+    testImplementation rootProject.ext.testLibraries.mockk
+    testImplementation rootProject.ext.testLibraries.mockito
+    testImplementation rootProject.ext.testLibraries.robolectric
+    testImplementation rootProject.ext.testLibraries.junit
+
+
+    androidTestImplementation rootProject.ext.testLibraries.testRunner
+    androidTestImplementation rootProject.ext.testLibraries.testRule
+    androidTestImplementation rootProject.ext.testLibraries.junit
+    androidTestImplementation rootProject.ext.testLibraries.testKtx
+
+    androidTestImplementation rootProject.ext.testLibraries.junitKtx
+    androidTestImplementation rootProject.ext.testLibraries.espressoContrib
+    androidTestImplementation rootProject.ext.testLibraries.mockitoAndroid
+    androidTestImplementation rootProject.ext.testLibraries.junitTest
+    androidTestImplementation rootProject.ext.testLibraries.espresso
+
 }
