@@ -61,9 +61,9 @@
             android:layout_marginTop="@dimen/margin_medium_2"
             layout="@layout/content_download"/>
     </LinearLayout>
-    <!--<include
+    <include
         android:id="@+id/vpEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        layout="@layout/viewpod_empty"/>-->
+        layout="@layout/viewpod_empty"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

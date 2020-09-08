@@ -71,14 +71,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rl1"
                     android:layout_marginTop="@dimen/margin_medium">
-                    <include
+                    <com.padcmyanmar.androidftc.padcx_podcastassignment_nct.views.viewpods.MediaPlayerViewPod
+                        app:use_controller="true"
                         android:id="@+id/viewpodMediaPlayer"
+                        app:show_timeout="0"
+                        app:rewind_increment="15000"
+                        app:fastforward_increment="30000"
+                        app:controller_layout_id="@layout/custom_player"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        layout="@layout/viewpod_media_player"/>
+                        android:layout_height="wrap_content"/>
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="wrap_content"
                         app:cardCornerRadius="30dp"
                         android:layout_marginTop="@dimen/margin_medium"
                         app:cardBackgroundColor="@color/lighterGray"
@@ -89,6 +93,9 @@
                             android:layout_height="wrap_content"
                             android:text="This is description"
                             android:textSize="@dimen/text_regular"
+                            android:ellipsize="end"
+                            android:maxLines="4"
+                            android:lineSpacingMultiplier="1.5"
                             android:textColor="@android:color/black"
                             android:layout_marginStart="@dimen/margin_medium_2"
                             android:layout_marginTop="@dimen/margin_medium_3"

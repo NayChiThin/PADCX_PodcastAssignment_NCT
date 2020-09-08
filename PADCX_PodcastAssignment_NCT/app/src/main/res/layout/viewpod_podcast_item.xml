@@ -61,7 +61,6 @@
                 android:tint="@color/colorPrimary"
                 android:layout_below="@id/tvPodcastCategory"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/margin_medium"
                 android:scaleType="centerCrop"
                 android:src="@drawable/download"/>
             <com.padcmyanmar.androidftc.shared.views.components.StraightProgressBar

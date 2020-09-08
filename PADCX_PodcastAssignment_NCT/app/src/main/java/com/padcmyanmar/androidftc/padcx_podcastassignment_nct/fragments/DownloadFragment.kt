@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.R
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.activities.DetailActivity
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.adapters.ShowListAdapter
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DownloadVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.DownloadPresenter
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.DownloadPresenterImpl
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.DownloadView
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.views.viewpods.EmptyViewPod
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_download.*
 import kotlinx.android.synthetic.main.fragment_download.*
@@ -25,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_download.*
 class DownloadFragment : Fragment(),DownloadView {
     private lateinit var mShowListAdapter : ShowListAdapter
     private lateinit var mPresenter : DownloadPresenter
+    private lateinit var mEmptyViewPod : EmptyViewPod
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +39,10 @@ class DownloadFragment : Fragment(),DownloadView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpPresenter()
+        setUpViewPod()
         setUpRecyclerView()
         setUpListener()
+        mPresenter.onUiReady(this)
     }
 
     private fun setUpListener() {
@@ -45,33 +50,32 @@ class DownloadFragment : Fragment(),DownloadView {
             mPresenter.onTapBack()
         }
     }
-
+    private fun setUpViewPod() {
+        mEmptyViewPod = vpEmpty as EmptyViewPod
+        mEmptyViewPod.setUpDelegate(mPresenter)
+    }
     private fun setUpPresenter() {
         mPresenter = ViewModelProviders.of(this).get(DownloadPresenterImpl::class.java)
         mPresenter.initPresenter(this)
     }
     private fun setUpRecyclerView() {
         mShowListAdapter = ShowListAdapter(mPresenter)
-        val linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        rvShows.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         rvShows.adapter = mShowListAdapter
-        rvShows.layoutManager = linearLayoutManager
+        rvShows.setEmptyView(mEmptyViewPod)
     }
 
-    override fun navigateToDetails(podcastId: Int) {
-        /*fragmentManager?.beginTransaction()
-            ?.replace(R.id.flBottomNavigationContainer,DetailFragment())
-            ?.commit()*/
-        startActivity(DetailActivity.newIntent(context,podcastId))
+    override fun navigateToDetails(id:String) {
+        startActivity(DetailActivity.newIntentFromDownload(context,id))
     }
 
     override fun navigateToHome() {
-        fragmentManager?.beginTransaction()
-            ?.replace(R.id.flBottomNavigationContainer,HomeFragment())
-            ?.commit()
         activity?.bottomNavigation!!.selectedItemId = R.id.action_home
     }
 
-
+    override fun displayDownloadList(episodes: List<DownloadVO>) {
+        mShowListAdapter.setNewData(episodes.toMutableList())
+    }
 
 
 }

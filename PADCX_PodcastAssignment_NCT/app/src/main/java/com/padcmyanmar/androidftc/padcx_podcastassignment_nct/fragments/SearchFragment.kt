@@ -13,6 +13,7 @@ import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.adapters.CategoryL
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.SearchPresenter
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.SearchPresenterImpl
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.SearchView
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.network.responses.GetGenresResponse
 import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
@@ -34,12 +35,17 @@ class SearchFragment : Fragment(),SearchView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpPresenter()
         setUpRecyclerView()
+        mPresenter.onUiReady(this)
     }
 
     override fun navigateToHome() {
         fragmentManager?.beginTransaction()
             ?.replace(R.id.flBottomNavigationContainer,HomeFragment())
             ?.commit()
+    }
+
+    override fun displayGenres(genres: GetGenresResponse) {
+        mCategoryListAdapter.setNewData(genres.genres?.toMutableList()?: arrayListOf())
     }
 
     private fun setUpPresenter() {
@@ -51,7 +57,6 @@ class SearchFragment : Fragment(),SearchView {
         val linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         rvCategories.adapter = mCategoryListAdapter
         rvCategories.layoutManager = linearLayoutManager
-
     }
 
 

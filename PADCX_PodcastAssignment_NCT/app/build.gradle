@@ -22,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
@@ -39,9 +42,13 @@ dependencies {
     implementation rootProject.ext.libraries.legacySupport
     implementation rootProject.ext.libraries.material
 
+    // exo player
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.11.8'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.11.8'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.11.8'
+
     // image binder
     implementation rootProject.ext.libraries.glide
-    annotationProcessor rootProject.ext.libraries.glideAnnotation
 
     //Retrofit
     implementation rootProject.ext.libraries.retrofit

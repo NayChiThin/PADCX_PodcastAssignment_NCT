@@ -7,4 +7,11 @@
         <attr name="barPercent" format="float"/>
         <attr name="barColor" format="color"/>
     </declare-styleable>
+    <declare-styleable name="CircularProgressBar">
+        <attr name="percent" format="float"/>
+        <attr name="lightColor" format="color"/>
+        <attr name="darkColor" format="color"/>
+        <attr name="percentText" format="integer"/>
+        <attr name="clockwise" format="boolean"/>
+    </declare-styleable>
 </resources>
