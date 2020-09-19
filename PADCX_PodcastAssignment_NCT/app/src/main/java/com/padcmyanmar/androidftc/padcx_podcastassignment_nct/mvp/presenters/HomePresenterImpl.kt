@@ -9,19 +9,23 @@ import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DownloadV
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.ItemVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.HomeView
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.utils.EPISODE_ID
+import com.padcmyanmar.androidftc.shared.mvp.presenters.AbstractBasePresenter
 
 
-class HomePresenterImpl:HomePresenter,AbstractBasePresenter<HomeView>() {
+class HomePresenterImpl:HomePresenter, AbstractBasePresenter<HomeView>() {
     var mPodcastModel : PodcastModel = PodcastModelImpl
     private lateinit var lifecycleOwner: LifecycleOwner
+
+    init {
+        loadRandomEpisodeFromApi()
+        loadPlaylistInfoFromApi(EPISODE_ID)
+    }
 
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
         this.lifecycleOwner = lifecycleOwner
 
-        loadRandomEpisodeFromApi()
         loadRandomEpisodeFromDb()
 
-        loadPlaylistInfoFromApi(EPISODE_ID)
         loadPlaylistInfoFromDb(EPISODE_ID)
 
     }

@@ -1,4 +1,4 @@
-package com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters
+package com.padcmyanmar.androidftc.shared.mvp.presenters
 
 import com.padcmyanmar.androidftc.shared.mvp.views.BaseView
 

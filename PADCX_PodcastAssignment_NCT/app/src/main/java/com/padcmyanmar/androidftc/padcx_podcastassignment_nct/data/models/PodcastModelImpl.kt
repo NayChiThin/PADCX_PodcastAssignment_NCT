@@ -52,6 +52,7 @@ object PodcastModelImpl :BaseModel(),PodcastModel{
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 mTheDB.playlistInfoDao().insertPlaylistInfo(it)
+                onSuccess()
             },{
                 onFailure(it.localizedMessage?: EM_NO_INTERNET_CONNECTION)
             })

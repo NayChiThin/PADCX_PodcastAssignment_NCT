@@ -5,8 +5,9 @@ import androidx.lifecycle.Observer
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.models.PodcastModel
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.models.PodcastModelImpl
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.DownloadView
+import com.padcmyanmar.androidftc.shared.mvp.presenters.AbstractBasePresenter
 
-class DownloadPresenterImpl : DownloadPresenter,AbstractBasePresenter<DownloadView>() {
+class DownloadPresenterImpl : DownloadPresenter, AbstractBasePresenter<DownloadView>() {
     var mPodcastModel : PodcastModel = PodcastModelImpl
     private lateinit var lifecycleOwner: LifecycleOwner
     override fun onTapBack() {

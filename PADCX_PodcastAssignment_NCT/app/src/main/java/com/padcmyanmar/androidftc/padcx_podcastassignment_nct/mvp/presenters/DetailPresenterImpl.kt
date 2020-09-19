@@ -5,8 +5,9 @@ import androidx.lifecycle.Observer
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.models.PodcastModel
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.models.PodcastModelImpl
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.DetailView
+import com.padcmyanmar.androidftc.shared.mvp.presenters.AbstractBasePresenter
 
-class DetailPresenterImpl : DetailPresenter,AbstractBasePresenter<DetailView>() {
+class DetailPresenterImpl : DetailPresenter, AbstractBasePresenter<DetailView>() {
     var mPodcastModel : PodcastModel = PodcastModelImpl
     private lateinit var lifecycleOwner: LifecycleOwner
     override fun onUiReady(lifecycleOwner: LifecycleOwner,id:String) {
