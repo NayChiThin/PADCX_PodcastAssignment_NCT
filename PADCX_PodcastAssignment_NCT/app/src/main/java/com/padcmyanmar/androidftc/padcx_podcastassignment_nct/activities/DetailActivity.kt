@@ -7,6 +7,7 @@ import androidx.core.text.parseAsHtml
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.R
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DataVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DownloadVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.DetailPresenter
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.DetailPresenterImpl
@@ -56,9 +57,9 @@ class DetailActivity : BaseActivity(),DetailView {
         }
     }
 
-    override fun displayDetail(detail: GetDetailResponse) {
-        val genreId = detail.podcast?.genreIds?.first() ?: 0
-        bindData(detail.image,detail.title,detail.description,detail.audioLengthSec,detail.link,genreId)
+    override fun displayDetail(detail: DataVO) {
+//        val genreId = detail.podcast?.genreIds?.first() ?: 0
+        bindData(detail.image,detail.title,detail.description,detail.audioLengthSec.toLong(),detail.link,144)
     }
 
     override fun displayDetailDownload(detail: DownloadVO) {

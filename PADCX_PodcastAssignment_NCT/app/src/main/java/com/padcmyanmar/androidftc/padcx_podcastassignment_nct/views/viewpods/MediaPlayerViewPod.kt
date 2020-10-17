@@ -18,6 +18,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.PodcastApp.Companion.simpleExoPlayer
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DataVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.network.responses.GetRandomEpisodeResponse
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.utils.PlaybackStateListener
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -38,7 +39,7 @@ class MediaPlayerViewPod @JvmOverloads constructor(
         super.onFinishInflate()
         initializePlayer()
     }
-    fun bindData(randomEpisode:GetRandomEpisodeResponse) {
+    fun bindData(randomEpisode:DataVO) {
         tvPodcastTitle.text = randomEpisode.title
         tvPodcastDescription.text = randomEpisode.description.parseAsHtml()
         Glide.with(context)

@@ -1,6 +1,7 @@
 package com.padcmyanmar.androidftc.padcx_podcastassignment_nct.views.viewholders
 
 import android.view.View
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DataVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.GenreVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.ItemVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.delegates.PodcastItemDelegate
@@ -18,7 +19,7 @@ class PodcastListViewHolder(itemView:View,private val delegate:PodcastItemDelega
         }
     }
 
-    override fun bindData(data: ItemVO) {
+    override fun bindData(data: DataVO) {
         mData = data
         mPodcastItemViewPod.bindData(data)
         mPodcastItemViewPod.setUpDelegate(delegate)

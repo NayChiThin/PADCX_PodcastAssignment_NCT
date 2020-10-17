@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.R
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.activities.DetailActivity
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.adapters.PodcastListAdapter
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DataVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DownloadVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.ItemVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.HomePresenter
@@ -95,10 +96,10 @@ class HomeFragment : Fragment(),HomeView {
             }
         }
     }
-    private fun beginDownload(context: Context,data:ItemVO?) {
-        val audioUrl = data?.data?.listenNotesUrl
-        val imageUrl = data?.data?.image
-        val title = data?.data?.title
+    private fun beginDownload(context: Context,data:DataVO?) {
+        val audioUrl = data?.listenNotesUrl
+        val imageUrl = data?.image
+        val title = data?.title
         // download audio
         url = audioUrl?.removeSurrounding("/")
         fileName = audioUrl?.substring(url?.lastIndexOf('/')!! +1)
@@ -125,20 +126,20 @@ class HomeFragment : Fragment(),HomeView {
         startActivity(DetailActivity.newIntent(context,podcastId))
     }
 
-    override fun displayRandomEpisode(randomEpisode: GetRandomEpisodeResponse) {
+    override fun displayRandomEpisode(randomEpisode: DataVO) {
         mMediaPlayerViewPod.bindData(randomEpisode)
         tvDescription.text = randomEpisode.description.parseAsHtml()
     }
 
-    override fun displayUpNextEpisodes(upnextEpisodes: GetPlaylistInfoResponse) {
-        mPodcastListAdapter.setNewData(upnextEpisodes.items?.toMutableList()?: arrayListOf())
+    override fun displayUpNextEpisodes(upnextEpisodes: List<DataVO>) {
+        mPodcastListAdapter.setNewData(upnextEpisodes.toMutableList()?: arrayListOf())
     }
 
-    override fun downloadEpisode(context: Context, data:ItemVO?) {
+    override fun downloadEpisode(context: Context, data:DataVO?) {
         if(checkPermission()) {
-            beginDownload(context,data)
+//            beginDownload(context,data)
         }
-        data?.data?.let {
+        data?.let {
             episode.title = it.title
             episode.id = it.id
             episode.description = it.description

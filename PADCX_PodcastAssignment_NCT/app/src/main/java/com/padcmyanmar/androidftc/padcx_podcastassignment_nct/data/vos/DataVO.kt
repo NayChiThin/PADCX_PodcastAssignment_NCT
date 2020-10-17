@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "episodes")
 data class DataVO(
     @SerializedName("maybe_audio_invalid") var maybeAudioInvalid : Boolean = false,
     @SerializedName("pub_date_ms") var pubDateMs : Long = 0,
@@ -18,6 +19,7 @@ data class DataVO(
     @SerializedName("explicit_content") var explicitContent : Boolean = false,
     @SerializedName("listennotes_url") var listenNotesUrl : String = "",
     @SerializedName("audio_length_sec") var audioLengthSec : Int = 0,
+    @PrimaryKey
     @SerializedName("id") var id : String = "",
     @SerializedName("link") var link : String = "",
     @Embedded(prefix = "podcast")

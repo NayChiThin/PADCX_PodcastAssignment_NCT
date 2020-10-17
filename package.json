@@ -1,0 +1,22 @@
+{
+  "name": "thepodcastapp-padcx",
+  "version": "1.0.0",
+  "description": "The Podcast App Data Importer for Podcast APP Padcx",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NayChiThin/PADCX_PodcastAssignment_NCT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NayChiThin/PADCX_PodcastAssignment_NCT/issues"
+  },
+  "homepage": "https://github.com/NayChiThin/PADCX_PodcastAssignment_NCT#readme",
+  "dependencies": {
+    "firestore-export-import": "^0.8.0"
+  }
+}

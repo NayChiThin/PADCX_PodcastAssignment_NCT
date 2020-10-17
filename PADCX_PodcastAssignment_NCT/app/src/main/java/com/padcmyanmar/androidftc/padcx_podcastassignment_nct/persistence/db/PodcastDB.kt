@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DataVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DownloadVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.GenreVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.network.responses.*
@@ -13,8 +14,8 @@ import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.persistence.typeco
 
 @Database(
     entities = [GenreVO::class,GetGenresResponse::class, GetRandomEpisodeResponse::class,
-        GetPlaylistInfoResponse::class, GetDetailResponse::class,DownloadVO::class],
-    version = 8,
+        GetPlaylistInfoResponse::class, GetDetailResponse::class,DownloadVO::class,DataVO::class],
+    version = 9,
     exportSchema = false
 )
 abstract class PodcastDB : RoomDatabase() {
@@ -39,4 +40,5 @@ abstract class PodcastDB : RoomDatabase() {
     abstract fun playlistInfoDao() : PlaylistInfoDao
     abstract fun detailDao() : DetailDao
     abstract fun downloadDao() : DownloadDao
+    abstract fun episodeDao() : EpisodeDao
 }

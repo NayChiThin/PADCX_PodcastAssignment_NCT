@@ -10,11 +10,14 @@ import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.network.responses.
 
 @Dao
 interface GenresDao {
-    @Query("SELECT * FROM genres")
-    fun getGenres() : LiveData<GetGenresResponse>
+   /* @Query("SELECT * FROM genres")
+    fun getGenres() : LiveData<GetGenresResponse>*/
 
+    @Query("SELECT * FROM genreList")
+    fun getGenresList() : LiveData<List<GenreVO>>
+/*
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertGenres(genres:GetGenresResponse)
+    fun insertGenres(genres:GetGenresResponse)*/
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGenre(listOfGenres:List<GenreVO>)

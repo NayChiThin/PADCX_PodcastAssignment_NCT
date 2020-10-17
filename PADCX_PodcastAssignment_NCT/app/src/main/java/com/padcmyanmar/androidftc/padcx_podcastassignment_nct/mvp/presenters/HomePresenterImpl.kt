@@ -5,6 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.models.PodcastModel
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.models.PodcastModelImpl
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DataVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.DownloadVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.ItemVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.HomeView
@@ -17,7 +18,6 @@ class HomePresenterImpl:HomePresenter, AbstractBasePresenter<HomeView>() {
     private lateinit var lifecycleOwner: LifecycleOwner
 
     init {
-        loadRandomEpisodeFromApi()
         loadPlaylistInfoFromApi(EPISODE_ID)
     }
 
@@ -42,7 +42,7 @@ class HomePresenterImpl:HomePresenter, AbstractBasePresenter<HomeView>() {
         mView?.navigateToDetails(podcastId)
     }
 
-    override fun onTapDownload(context:Context,data:ItemVO?) {
+    override fun onTapDownload(context:Context,data:DataVO?) {
 //        Log.d("Tapped Download:","tapped id : $downloadUrl")
         mView?.downloadEpisode(context,data)
     }

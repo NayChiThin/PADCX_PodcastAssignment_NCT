@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.R
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.adapters.CategoryListAdapter
+import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.data.vos.GenreVO
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.SearchPresenter
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.presenters.SearchPresenterImpl
 import com.padcmyanmar.androidftc.padcx_podcastassignment_nct.mvp.views.SearchView
@@ -44,8 +45,8 @@ class SearchFragment : Fragment(),SearchView {
             ?.commit()
     }
 
-    override fun displayGenres(genres: GetGenresResponse) {
-        mCategoryListAdapter.setNewData(genres.genres?.toMutableList()?: arrayListOf())
+    override fun displayGenres(genres: List<GenreVO>) {
+        mCategoryListAdapter.setNewData(genres.toMutableList()?: arrayListOf())
     }
 
     private fun setUpPresenter() {
